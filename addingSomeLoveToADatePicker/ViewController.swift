@@ -44,10 +44,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     // Styles for selected cells
     if pickerView.selectedRowInComponent(component) == row {
-      view.textColor = .redColor()
+      view.textColor = .whiteColor()
       view.font = UIFont.boldSystemFontOfSize(selectedRowFontSize)
     } else {
       // Styles for non-selected cells
+      view.textColor = .lightGrayColor()
       view.font = UIFont.systemFontOfSize(rowFontSize)
     }
     

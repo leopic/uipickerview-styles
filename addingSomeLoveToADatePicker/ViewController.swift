@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
-  let rowFontSize = CGFloat(24)
-  let selectedRowFontSize = CGFloat(30)
+  let rowFontSize = CGFloat(30)
+  let selectedRowFontSize = CGFloat(48)
   var rows = [Int]()
   
   @IBOutlet weak var pickerView: UIPickerView!
@@ -68,7 +68,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
   
   // Height for all rows, based on the height of the selected row's font size
   func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-    let lineHeight = CGFloat(1.3)
+    let lineHeight = CGFloat(1.5)
     return selectedRowFontSize * lineHeight
   }
   

@@ -9,28 +9,37 @@
 import XCTest
 
 class addingSomeLoveToADatePickerUITests: XCTestCase {
-        
-    override func setUp() {
-        super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+  
+  var app:XCUIApplication!
+  
+  override func setUp() {
+    super.setUp()
+    continueAfterFailure = false
+    app = XCUIApplication()
+    app.launch()
+  }
+  
+  // Broken test example
+  func testExample() {
+    let pickerWheel = app.pickerWheels.element
+    
+    // Reading the value
+    if let value = pickerWheel.value as? String {
+      XCTAssertNotEqual("1", value, "This is unexpected, using `viewForRow` affects the value.")
+      XCTAssertEqual("1, 1 of 5", value, "This is the return value after using `viewForRow`.")
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+    // Okay, I'll play ball and use this weird name instead
+    pickerWheel.adjustToPickerWheelValue("3, 3 of 5")
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    // Nope, still no dice
+    pickerWheel.adjustToPickerWheelValue("3")
     
+    // Okay I'll use recordings and get a hold of it like that
+    app.pickerWheels["1, 1 of 5"].tap()
+    
+    XCTAssertNotNil(true)
+    
+  }
+  
 }

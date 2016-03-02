@@ -19,7 +19,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
   override func viewDidLoad() {
     super.viewDidLoad()
     // Quick Jon-ism to populate the cells
-    rows = (0...60).map({return $0})
+    rows = (1...5).map({return $0})
     pickerView.delegate = self
     pickerView.dataSource = self
   }
@@ -27,7 +27,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
   func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
     return 1
   }
-  
   
   func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
     return rows.count
